@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Management System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-icon">S</div><div><strong>StudentHub</strong><small>Management System</small></div></div>
+      <nav>
+        <a class="nav-link active" href="#dashboard">▦ <span>Dashboard</span></a>
+        <a class="nav-link" href="#students">♙ <span>Students</span></a>
+      </nav>
+      <div class="sidebar-note"><span class="dot"></span> Local demo version</div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div><p class="eyebrow">OVERVIEW</p><h1>Student Dashboard</h1></div>
+        
+      </header>
+
+      <section class="stats-grid" id="dashboard">
+        <article class="stat-card"><div class="stat-top"><span>Total Students</span><span class="stat-icon purple">♙</span></div><strong id="totalStudents">0</strong><small>Registered students</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Active Students</span><span class="stat-icon green">✓</span></div><strong id="activeStudents">0</strong><small>Currently active</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Courses</span><span class="stat-icon orange">▤</span></div><strong id="totalCourses">0</strong><small>Unique courses</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Average Age</span><span class="stat-icon blue">◷</span></div><strong id="averageAge">0</strong><small>Years</small></article>
+      </section>
+
+      <section class="panel" id="students">
+        <div class="panel-heading">
+          <div><p class="eyebrow">STUDENT DIRECTORY</p><h2>Manage Students</h2><p class="muted">Add, search, update and remove student records.</p></div>
+          <button class="primary-btn" id="addStudentBtn">＋ Add Student</button>
+        </div>
+        <div class="toolbar">
+          <label class="search-box">⌕ <input id="searchInput" type="search" placeholder="Search by name, roll number or course..." /></label>
+          <select id="courseFilter"><option value="">All courses</option></select>
+          <select id="statusFilter"><option value="">All statuses</option><option>Active</option><option>Inactive</option></select>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>STUDENT</th><th>ROLL NO.</th><th>COURSE</th><th>EMAIL</th><th>AGE</th><th>STATUS</th><th>ACTIONS</th></tr></thead>
+            <tbody id="studentTableBody"></tbody>
+          </table>
+          <div class="empty-state" id="emptyState"><div class="empty-icon">♙</div><h3>No students found</h3><p>Add a student or change your search filters.</p></div>
+        </div>
+        <div class="table-footer"><span id="recordCount">Showing 0 students</span><span>Data is saved in this browser</span></div>
+      </section>
+      <footer>StudentHub <span>•</span> Student Management System</footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="studentModal" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-header"><div><p class="eyebrow">STUDENT DETAILS</p><h2 id="modalTitle">Add New Student</h2></div><button class="icon-btn" id="closeModal" aria-label="Close">×</button></div>
+      <form id="studentForm">
+        <input type="hidden" id="studentId" />
+        <div class="form-grid">
+          <label>Full Name *<input id="name" required maxlength="60" placeholder="e.g. Anish Sharma" /></label>
+          <label>Roll Number *<input id="roll" required maxlength="20" placeholder="e.g. 25EGJIT004" /></label>
+          <label>Email Address *<input id="email" type="email" required placeholder="student@example.com" /></label>
+          <label>Phone Number<input id="phone" type="tel" pattern="[0-9+() -]{7,18}" placeholder="Optional" /></label>
+          <label>Course / Branch *<input id="course" required maxlength="50" placeholder="e.g. B.Tech CSE" /></label>
+          <label>Age *<input id="age" type="number" required min="15" max="100" placeholder="e.g. 20" /></label>
+          <label>Status<select id="status"><option>Active</option><option>Inactive</option></select></label>
+          <label>Admission Date<input id="admissionDate" type="date" /></label>
+        </div>
+        <div class="form-actions"><button type="button" class="secondary-btn" id="cancelModal">Cancel</button><button type="submit" class="primary-btn">Save Student</button></div>
+      </form>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
