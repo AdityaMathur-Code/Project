@@ -99,5 +99,5 @@ Total outstanding: 23000
 
 ## Files
 
-- `rental_basic.cpp`: the program
+- `property_rental.cpp`: the program
 - `README.md`: this file
